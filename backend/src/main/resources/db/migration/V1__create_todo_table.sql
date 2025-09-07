@@ -1,0 +1,7 @@
+CREATE TABLE todos (
+   id BIGSERIAL PRIMARY KEY,
+   description VARCHAR(255) NOT NULL,
+   created_at TIMESTAMP NOT NULL,
+   due_date TIMESTAMP,
+   done BOOLEAN DEFAULT FALSE
+);
