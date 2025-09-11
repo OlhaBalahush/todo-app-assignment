@@ -1,35 +1,40 @@
-# todo-app-assignment
+# Todo Application
 
-## Backend
+Todo App for managing tasks, with subtasks, deadlines, and smart filtering.
+Built with a React frontend and a Spring Boot backend, fully containerized with Docker.
 
-### Current state
-- Spring Boot project initialized
-- H2 in-memory database configured
-- Runs on `http://localhost:8080`
+## Features implemented
 
+- CRUD operations for todos to support the frontend
+- Endpoint to fetch a list of todos according to a filter. When multiple filters are specified then results must match all (Done / Not done, Due date, Text search which matches any part of a todo description)
+- Can add todos under todos (infinitely)
+- Filtering optimized so that it can handle 1 000 000 todos
 
-## Frontend
+## How to run
 
-I chose to use **React with TypeScript** instead of plain JavaScript because:
-- TypeScript is a superset of JavaScript (all JS code is valid TS).
-- Provides stronger type safety, which reduces runtime errors.
-- Improves developer experience with autocompletion and clearer contracts between backend and frontend.
-- Makes the codebase easier to scale and maintain.
+1. Clone repository
+2. Run
+   ```bash
+    docker-compose up -d
+   ```
+3. Access application at http://localhost:3000
 
-If required, this frontend can easily be migrated to plain JavaScript by removing type annotations,
-but TypeScript brings practical advantages while staying aligned with the intent of the requirements.
+## Project Structure
 
-### Current state
-- React app with TypeScript
-- Connected to backend API
-- Runs on `http://localhost:3000`
+```
+├── frontend/     
+├── backend/
+└── docker-compose.yml 
+```
+## Tech stack
 
-### How to run
-```bash
-cd backend
-./mvnw spring-boot:run
+- **Frontend**: React 19 + TypeScript + Material-UI
+- **Backend**: Spring Boot 3.5 + Java 17 + PostgreSQL
+- **Database**: PostgreSQL 15 with Flyway migrations
+- **Containerization**: Docker + Docker Compose
 
-cd ..
-cd frontend
-npm install
-npm start
+## Documentation
+
+- [Frontend Documentation](frontend/README.md)
+- [Backend Documentation](backend/README.md)
+- [Docker Documentation](DOCKER.md)
