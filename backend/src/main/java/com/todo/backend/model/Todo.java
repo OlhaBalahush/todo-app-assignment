@@ -2,6 +2,7 @@ package com.todo.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,8 +18,12 @@ public class Todo {
 
     private String description;
 
+    @Column(name = "created_at")
+    @JsonProperty("createdAt")
     private LocalDateTime createdAt;
 
+    @Column(name = "due_date")
+    @JsonProperty("dueDate")
     private LocalDateTime dueDate;
 
     @Enumerated(EnumType.STRING)

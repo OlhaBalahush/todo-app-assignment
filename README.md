@@ -19,6 +19,16 @@ Built with a React frontend and a Spring Boot backend, fully containerized with 
    ```
 3. Access application at http://localhost:3000
 
+### Test Data Included
+
+The application comes with **pre-loaded test data** including:
+- 10 main todos with various statuses (TODO/DONE)
+- 25+ subtasks with realistic content
+- Different due dates and categories
+- Sample data for testing all features
+
+Test data is automatically loaded via Flyway migrations when using Docker.
+
 ## Project Structure
 
 ```

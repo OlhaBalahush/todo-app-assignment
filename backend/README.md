@@ -1,6 +1,6 @@
 # Backend - Spring Boot
 
-RESTful API for the Todo application built with Spring Boot and PostgreSQL.
+RESTful API for the Todo application built with Spring Boot and PostgreSQL. The application includes comprehensive test data loaded via Flyway migration `V4__insert_test_data.sql`
 
 ## How to run
 
