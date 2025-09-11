@@ -10,6 +10,15 @@
 
 ## Frontend
 
+I chose to use **React with TypeScript** instead of plain JavaScript because:
+- TypeScript is a superset of JavaScript (all JS code is valid TS).
+- Provides stronger type safety, which reduces runtime errors.
+- Improves developer experience with autocompletion and clearer contracts between backend and frontend.
+- Makes the codebase easier to scale and maintain.
+
+If required, this frontend can easily be migrated to plain JavaScript by removing type annotations,
+but TypeScript brings practical advantages while staying aligned with the intent of the requirements.
+
 ### Current state
 - React app with TypeScript
 - Connected to backend API

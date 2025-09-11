@@ -1,7 +1,11 @@
 package com.todo.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "todos")
@@ -17,7 +21,19 @@ public class Todo {
 
     private LocalDateTime dueDate;
 
-    private boolean done = false;
+    @Enumerated(EnumType.STRING)
+    private TodoStatus status = TodoStatus.TODO;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    @JsonBackReference
+    private Todo parent;
+
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Todo> subtasks = new ArrayList<>();
+
 
     @PrePersist
     public void prePersist() {
@@ -33,7 +49,7 @@ public class Todo {
         this.description = description;
         this.createdAt = LocalDateTime.now();
         this.dueDate = dueDate;
-        this.done = false;
+        this.status = TodoStatus.TODO;
     }
 
     public Long getId() {
@@ -68,12 +84,36 @@ public class Todo {
         this.dueDate = dueDate;
     }
 
+    public TodoStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TodoStatus status) {
+        this.status = status;
+    }
+
+    // Convenience methods for backward compatibility
     public boolean isDone() {
-        return done;
+        return status == TodoStatus.DONE;
     }
 
     public void setDone(boolean done) {
-        this.done = done;
+        this.status = done ? TodoStatus.DONE : TodoStatus.TODO;
     }
 
+    public Todo getParent() {
+        return parent;
+    }
+
+    public void setParent(Todo parent) {
+        this.parent = parent;
+    }
+
+    public List<Todo> getSubtasks() {
+        return subtasks;
+    }
+
+    public void setSubtasks(List<Todo> subtasks) {
+        this.subtasks = subtasks;
+    }
 }
